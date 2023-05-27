@@ -5,8 +5,8 @@ from fastapi.responses import  JSONResponse
 from fastapi.encoders import jsonable_encoder
 import motor.motor_asyncio
 import os
-from functions.cumulative_data import cumulative_exposure_data
-from functions.timeseries import timeseries_data
+#from functions.cumulative_data import cumulative_exposure_data
+#from functions.timeseries import timeseries_data
 from datetime import datetime
 from typing import List
 from database import get_database
@@ -19,7 +19,7 @@ air_repository = AirRepository(database=get_database())
 
 @router.get("/air/zipcode/{zipcode}/atomosome/summary", response_description="atmosome summary data")
 def atmosome_data_summary(zipcode):
-    data = hourly_data(zipcode)
+    # data = hourly_data(zipcode)
     # data = hourly_data(zipcode, 720)s
     return {"status":"success"}
 
@@ -45,15 +45,15 @@ async def atmosome_data(zipcode):
 '''
 Atmosome Cumulative Data
 '''
-@router.get("/api/air/zipcode/{zipcode}/atmosome/cumulative", response_description="atmosome cumulative")
-async def atmosome_data_cumulative(zipcode):
-    data = cumulative_exposure_data(zipcode)
-    return data
+# @router.get("/api/air/zipcode/{zipcode}/atmosome/cumulative", response_description="atmosome cumulative")
+# async def atmosome_data_cumulative(zipcode):
+#     data = cumulative_exposure_data(zipcode)
+#     return data
 
-'''
-Atmosome Timeseries Data
-'''
-@router.get("/api/air/zipcode/{zipcode}/atmosome/timeseries", response_description="atmosome cumulative")
-def atmosome_data_timeseries(zipcode):
-    data = timeseries_data(zipcode)
-    return data
+# '''
+# Atmosome Timeseries Data
+# '''
+# @router.get("/api/air/zipcode/{zipcode}/atmosome/timeseries", response_description="atmosome cumulative")
+# def atmosome_data_timeseries(zipcode):
+#     data = timeseries_data(zipcode)
+#     return data
