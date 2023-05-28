@@ -8,6 +8,8 @@ If you really don't want to read the [blog post](https://developer.mongodb.com/q
 activate your Python virtualenv, and then run the following from your terminal (edit the `MONGODB_URL` first!):
 
 ```bash
+#
+
 # Install the requirements:
 pip install -r requirements.txt
 

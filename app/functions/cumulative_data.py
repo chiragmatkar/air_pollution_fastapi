@@ -1,5 +1,5 @@
 from datetime import date, datetime, timedelta
-from models import Air, AirSchema
+from app.models import Air, AirSchema
 from variables import *
 from functions.calculate_on_ref_Ro import *
 

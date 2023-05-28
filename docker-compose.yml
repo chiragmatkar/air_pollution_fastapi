@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+    app:
+      build: .
+      ports:
+        - 80:80
+      depends_on:
+        - mongodb
+      env_file: docker.env  
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        command: mongod --port 27017
+        ports:
+            - 27017:27017
+        volumes:
+            - /tmp:/tmp/db
+        expose:
+            - 27017    

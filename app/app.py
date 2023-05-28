@@ -4,7 +4,7 @@ from fastapi.responses import Response, JSONResponse , HTMLResponse
 from fastapi.encoders import jsonable_encoder
 from typing import  List
 import motor.motor_asyncio
-from routers import create, getAllDetails , getDetailsByZipcode ,getDetailsByDate ,getDetailsByLocation , getDetailsFromAtomosome
+from app.routers import create, getAllDetails , getDetailsByZipcode ,getDetailsByDate ,getDetailsByLocation , getDetailsFromAtomosome
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
@@ -12,8 +12,8 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="static/templates")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+templates = Jinja2Templates(directory="app/templates")
 
 # @app.on_event("startup")
 # async def start_db():

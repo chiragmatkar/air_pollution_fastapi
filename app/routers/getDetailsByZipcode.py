@@ -1,17 +1,17 @@
 from fastapi import APIRouter
 from fastapi import  Body,  status , Depends
-from models import AirModel , AirRepository
+from app.models import AirModel , AirRepository
 from fastapi.responses import  JSONResponse
 from fastapi.encoders import jsonable_encoder
 import motor.motor_asyncio
 import os
-from functions.variables import *
-from functions.calculate_on_ref_Ro import calculate_on_ref_Ro, create_datetime_obj
+from app.functions.variables import *
+from app.functions.calculate_on_ref_Ro import calculate_on_ref_Ro, create_datetime_obj
 import csv
 import json
 from datetime import datetime
 from typing import List
-from database import get_database ,get_collection
+from app.database import get_database ,get_collection
 
 router = APIRouter(prefix='/api',tags=['get air pollution record by zipcode'])
 air_repository = AirRepository(database=get_database())

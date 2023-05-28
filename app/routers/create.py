@@ -1,15 +1,17 @@
 from fastapi import APIRouter
 from fastapi import  Body,  status
-from models import AirModel , AirRepository
+from app.models import AirModel , AirRepository
 from fastapi.responses import  JSONResponse
 from fastapi.encoders import jsonable_encoder
-from functions.variables import *
-from functions.calculate_on_ref_Ro import calculate_on_ref_Ro, create_datetime_obj
-from database import get_database ,get_collection
+from app.functions.variables import *
+from app.functions.calculate_on_ref_Ro import calculate_on_ref_Ro, create_datetime_obj
+from app.database import get_database ,get_collection
 
 router = APIRouter(prefix='/api',tags=['create air pollution record'])
 air_repository = AirRepository(database=get_database())
 collection=get_collection()
+
+print("Collection Info", collection.name)
 
 @router.post("/air", response_description="Add new air pollution record", response_model=AirModel)
 async def create_air_pollution_record(air: AirModel):

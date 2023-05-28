@@ -1,7 +1,7 @@
 from variables import * 
 from datetime import date, datetime, timedelta
 from apps.graph import timeseries_graphs
-from models import Air, AirSchema
+from app.models import Air, AirSchema
 from variables import *
 from functions.calculate_on_ref_Ro import *
 

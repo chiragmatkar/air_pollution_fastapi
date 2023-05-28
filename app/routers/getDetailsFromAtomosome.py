@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from fastapi import  Body,  status
-from models import AirModel , AirRepository
+from app.models import AirModel , AirRepository
 from fastapi.responses import  JSONResponse
 from fastapi.encoders import jsonable_encoder
 import motor.motor_asyncio
@@ -9,7 +9,7 @@ import os
 #from functions.timeseries import timeseries_data
 from datetime import datetime
 from typing import List
-from database import get_database
+from app.database import get_database
 
 
 router = APIRouter(prefix='/api',tags=['get air pollution record by atomosme'])
