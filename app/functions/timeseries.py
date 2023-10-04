@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib.dates import MO, TU, WE, TH, FR, SA
 from datetime import datetime
-
+from .variables import *
 
 def plot_timeseries(data, name, unit, zipcode, current_time, lines_data=None):
     # plot data

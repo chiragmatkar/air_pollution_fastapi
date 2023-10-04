@@ -1,9 +1,8 @@
-from variables import * 
+from .variables import * 
 from datetime import date, datetime, timedelta
-from timeseries import timeseries_graphs
-from app.models import Air, AirSchema
-from variables import *
-from functions.calculate_on_ref_Ro import *
+from .timeseries import timeseries_graphs
+from app.models import AirModel 
+from .calculate_on_ref_Ro import *
 
 def hourly_data(zipcode, num_of_hours=ONE_HOUR):
     pollutants_vals = ["N/A"] * NUM_OF_POLLLUTANTS
@@ -20,7 +19,7 @@ def hourly_data(zipcode, num_of_hours=ONE_HOUR):
 
     past_time = datetime.now() - timedelta(hours=num_of_hours)
 
-    airdata = Air.query.with_entities(
+    airdata = AirModel.query.with_entities(
         func.avg(Air.dustDensity).label('avg_pm25'),
         func.avg(Air.tVOC).label('avg_tVOC'),
         func.avg(Air.co2_ppm).label('avg_co2'),
@@ -35,7 +34,7 @@ def hourly_data(zipcode, num_of_hours=ONE_HOUR):
         func.avg(Air.humidity).label('avg_humidity'),
         func.avg(Air.pressure).label('avg_pressure'),
         func.avg(Air.altitude).label('avg_altitude')
-    ).filter(Air.zipcode == zipcode, Air.timestamp >= past_time).all()
+    ).filter(AirModel.zipcode == zipcode, AirModel.timestamp >= past_time).all()
 
     print(airdata)
     print("^^^^^^^^^^^^^^^^^^")

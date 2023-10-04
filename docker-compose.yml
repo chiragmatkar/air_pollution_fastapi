@@ -11,10 +11,10 @@ services:
     mongodb:
         image: mongo:latest
         container_name: mongodb
-        command: mongod --port 27017
+        #command: mongod --port 27017
         ports:
             - 27017:27017
-        volumes:
-            - /tmp:/tmp/db
-        expose:
+        expose: 
             - 27017    
+        volumes:
+            - /tmp:/tmp/db  

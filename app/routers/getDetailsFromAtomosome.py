@@ -10,7 +10,7 @@ import os
 from datetime import datetime
 from typing import List
 from app.database import get_database
-
+from app.functions.hourly_data import hourly_data
 
 router = APIRouter(prefix='/api',tags=['get air pollution record by atomosme'])
 air_repository = AirRepository(database=get_database())
@@ -19,7 +19,7 @@ air_repository = AirRepository(database=get_database())
 
 @router.get("/air/zipcode/{zipcode}/atomosome/summary", response_description="atmosome summary data")
 def atmosome_data_summary(zipcode):
-    # data = hourly_data(zipcode)
+    data = hourly_data(zipcode)
     # data = hourly_data(zipcode, 720)s
     return {"status":"success"}
 
@@ -42,9 +42,7 @@ async def atmosome_data(zipcode):
  
 
 
-'''
-Atmosome Cumulative Data
-'''
+
 # @router.get("/api/air/zipcode/{zipcode}/atmosome/cumulative", response_description="atmosome cumulative")
 # async def atmosome_data_cumulative(zipcode):
 #     data = cumulative_exposure_data(zipcode)
